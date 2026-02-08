@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setAllowContentAccess(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webView.setWebViewClient(new Callback());
-        webView.loadUrl("file:///android_asset/com.crackyOS.pwgen/dist/index.html");
+        webView.loadUrl("file:///android_asset/dist/index.html");
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
