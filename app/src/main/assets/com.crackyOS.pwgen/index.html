@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passwort Generator</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./fonts.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    :root {
+      --md-sys-color-primary: #4f8cff;
+      --md-sys-color-on-primary: #ffffff;
+      --md-sys-color-surface: #fefbff;
+      --md-sys-color-on-surface: #1b1b1f;
+      --md-sys-color-surface-variant: #e2e1ec;
+      --md-sys-color-on-surface-variant: #45464f;
+      --bg-gradient: linear-gradient(120deg, #5890c4, #0f1f2d);
+    }
+    md-filled-text-field {
+      --md-filled-text-field-label-text-font: 'Rubik', system-ui, sans-serif;
+      --md-filled-text-field-input-text-font: 'Rubik', system-ui, sans-serif;
+      --md-filled-text-field-supporting-text-font: 'Rubik', system-ui, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --md-sys-color-primary: #adc6ff;
+        --md-sys-color-on-primary: #002e69;
+        --md-sys-color-surface: #1b1b1f;
+        --md-sys-color-on-surface: #e3e2e6;
+        --md-sys-color-surface-variant: #45464f;
+        --md-sys-color-on-surface-variant: #c6c6d0;
+        --bg-gradient: linear-gradient(120deg, #0f1f2d, #050a0f);
+      }
+      md-filled-text-field {
+        --md-filled-text-field-container-color: var(--md-sys-color-surface-variant);
+        --md-filled-text-field-input-text-color: var(--md-sys-color-on-surface);
+        --md-filled-text-field-label-text-color: var(--md-sys-color-on-surface-variant);
+        --md-filled-text-field-focus-label-text-color: var(--md-sys-color-primary);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Rubik', system-ui, sans-serif !important;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-gradient);
+      transition: background 0.3s ease;
+    }
+
+    .container {
+      width: 360px;
+      padding: 24px;
+      border-radius: 24px;
+      background: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    md-icon {
+      font-family: 'Material Icons' !important;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .result {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 16px;
+      background: var(--md-sys-color-surface-variant);
+      min-height: 56px;
+    }
+
+    #result {
+      flex: 1;
+      word-break: break-all;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+    }
+
+    h2 {
+      margin: 0 0 8px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Passwort Generator</h2>
+
+    <div class="result">
+      <span id="result"></span>
+      <md-icon-button id="clipboard">
+        <md-icon>content_copy</md-icon>
+      </md-icon-button>
+    </div>
+
+    <md-filled-text-field
+      id="length"
+      type="number"
+      label="Länge"
+      value="18"
+      min="4"
+      max="40">
+    </md-filled-text-field>
+
+    <div class="setting">
+      <span>Großbuchstaben</span>
+      <md-checkbox id="uppercase"></md-checkbox>
+    </div>
+
+    <div class="setting">
+      <span>Kleinbuchstaben</span>
+      <md-checkbox id="lowercase"></md-checkbox>
+    </div>
+
+    <div class="setting">
+      <span>Ziffern</span>
+      <md-checkbox id="numbers"></md-checkbox>
+    </div>
+
+    <div class="setting">
+      <span>Sonderzeichen</span>
+      <md-checkbox id="symbols"></md-checkbox>
+    </div>
+
+    <md-filled-button id="generate">
+      Passwort generieren
+    </md-filled-button>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
