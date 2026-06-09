@@ -1,3 +1,14 @@
+// === Pride Mode (01.06 - 30.06) ===
+/*(function() {
+  var now = new Date();
+  var month = now.getMonth() + 1; // 1-based
+  var day = now.getDate();
+  if (month === 6 && day >= 1 && day <= 30) {
+    document.body.classList.add('pride-mode');
+  }
+})();*/
+// === Ende Pride Mode ===
+
 function save_length() {
   var input = document.getElementById("length");
   localStorage.setItem("com.crackyOS.pwgen_length", input.value);

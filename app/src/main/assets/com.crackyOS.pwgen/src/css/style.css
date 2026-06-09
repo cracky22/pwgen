@@ -18,6 +18,56 @@ body {
   margin: 0;
 }
 
+/* === Pride Mode (01.06 - 30.06) === */
+body.pride-mode {
+  background-image: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%);
+}
+
+body.pride-mode .container {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+body.pride-mode .pride-stripe {
+  display: block;
+}
+
+body.pride-mode .result-container {
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.pride-mode button.btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.pride-mode button.btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Pride stripe bar */
+.pride-stripe {
+  display: none;
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 18px;
+  background: linear-gradient(
+    to right,
+    #ff6b6b 0%,
+    #ffa94d 16.66%,
+    #ffe066 33.33%,
+    #69db7c 50%,
+    #74c0fc 66.66%,
+    #cc5de8 83.33%,
+    #ff6b6b 100%
+  );
+  opacity: 0.75;
+}
+/* === Ende Pride Mode === */
+
 h2 {
   margin: 1px 0 20px;
   text-align: center;
