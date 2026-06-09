@@ -1,4 +1,4 @@
-package com.crackyos.pwgen;
+package com.crackyOS.pwgen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
