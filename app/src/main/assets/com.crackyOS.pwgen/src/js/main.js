@@ -26,6 +26,13 @@ function save_symbols() {
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_symbols"));
 document.getElementById("symbols").checked = checked;
 
+function save_readability() {
+  var checkbox = document.getElementById("readability");
+  localStorage.setItem("com.crackyOS.pwgen_readability", checkbox.checked);
+}
+var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_readability"));
+document.getElementById("readability").checked = checked;
+
 ("use strict");
 const resultEl = document.getElementById("result"),
   lengthEl = document.getElementById("length"),
@@ -33,6 +40,7 @@ const resultEl = document.getElementById("result"),
   lowercaseEl = document.getElementById("lowercase"),
   numbersEl = document.getElementById("numbers"),
   symbolsEl = document.getElementById("symbols"),
+  readabilityEl = document.getElementById("readability"),
   generateEl = document.getElementById("generate"),
   clipboardEl = document.getElementById("clipboard");
 
@@ -94,15 +102,33 @@ function generatePassword(lower, upper, number, symbol, length) {
 }
 
 function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  const readability = readabilityEl.checked;
+  const excluded = readability ? ['l'] : [];
+  let char;
+  do {
+    char = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  } while (excluded.includes(char));
+  return char;
 }
 
 function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  const readability = readabilityEl.checked;
+  const excluded = readability ? ['I', 'O'] : [];
+  let char;
+  do {
+    char = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  } while (excluded.includes(char));
+  return char;
 }
 
 function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  const readability = readabilityEl.checked;
+  const excluded = readability ? ['0'] : [];
+  let char;
+  do {
+    char = String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  } while (excluded.includes(char));
+  return char;
 }
 
 function getRandomSymbol() {
@@ -116,4 +142,5 @@ function getConf() {
   lowercase = localStorage.getItem("com.crackyOS.pwgen_lowercase");
   numbers = localStorage.getItem("com.crackyOS.pwgen_numbers");
   symbols = localStorage.getItem("com.crackyOS.pwgen_symbols");
+  readability = localStorage.getItem("com.crackyOS.pwgen_readability");
 }
