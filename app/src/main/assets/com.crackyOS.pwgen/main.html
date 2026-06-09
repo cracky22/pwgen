@@ -24,26 +24,26 @@
       </div>
       <div class="setting">
         <label>Großbuchstaben</label>
-        <input onclick="save_uppercase();" type="checkbox" id="uppercase"  />
+        <input onclick="save_uppercase(); navigator.vibrate(15);" type="checkbox" id="uppercase"  />
       </div>
       <div class="setting">
         <label>Kleinbuchstaben</label>
-        <input onclick="save_lowercase();" type="checkbox" id="lowercase"  />
+        <input onclick="save_lowercase(); navigator.vibrate(15);" type="checkbox" id="lowercase"  />
       </div>
       <div class="setting">
         <label>Ziffern</label>
-        <input onclick="save_numbers();" type="checkbox" id="numbers"  />
+        <input onclick="save_numbers(); navigator.vibrate(15);" type="checkbox" id="numbers"  />
       </div>
       <div class="setting">
         <label>Sonderzeichen</label>
-        <input onclick="save_symbols();" type="checkbox" id="symbols"  />
+        <input onclick="save_symbols(); navigator.vibrate(15);" type="checkbox" id="symbols"  />
       </div>
       <div class="setting">
         <label>gut lesbar</label>
-        <input onclick="save_readability();" type="checkbox" id="readability"  />
+        <input onclick="save_readability(); navigator.vibrate(15);" type="checkbox" id="readability"  />
       </div>
     </div>
-    <button class="btn btn-large" id="generate">Passwort generieren</button>
+    <button class="btn btn-large" id="generate" onclick="navigator.vibrate(15);">Passwort generieren</button>
   </div>
   <script src="./src/js/main.js"></script>
 </body>
