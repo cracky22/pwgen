@@ -80,6 +80,10 @@ const randomFunc = {
   symbol: getRandomSymbol,
 };
 
+document.getElementById("length").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") e.target.blur();
+});
+
 clipboardEl.addEventListener("click", () => {
   const textarea = document.createElement("textarea"),
     password = resultEl.innerText;
