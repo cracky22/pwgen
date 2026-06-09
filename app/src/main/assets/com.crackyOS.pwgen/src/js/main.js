@@ -1,6 +1,14 @@
+function save_length() {
+  var input = document.getElementById("length");
+  localStorage.setItem("com.crackyOS.pwgen_length", input.value);
+}
+var savedLength = localStorage.getItem("com.crackyOS.pwgen_length");
+if (savedLength !== null) document.getElementById("length").value = savedLength;
+
 function save_uppercase() {
   var checkbox = document.getElementById("uppercase");
   localStorage.setItem("com.crackyOS.pwgen_uppercase", checkbox.checked);
+  navigator.vibrate(15);
 }
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_uppercase"));
 document.getElementById("uppercase").checked = checked;
@@ -8,6 +16,7 @@ document.getElementById("uppercase").checked = checked;
 function save_lowercase() {
   var checkbox = document.getElementById("lowercase");
   localStorage.setItem("com.crackyOS.pwgen_lowercase", checkbox.checked);
+  navigator.vibrate(15);
 }
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_lowercase"));
 document.getElementById("lowercase").checked = checked;
@@ -15,6 +24,7 @@ document.getElementById("lowercase").checked = checked;
 function save_numbers() {
   var checkbox = document.getElementById("numbers");
   localStorage.setItem("com.crackyOS.pwgen_numbers", checkbox.checked);
+  navigator.vibrate(15);
 }
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_numbers"));
 document.getElementById("numbers").checked = checked;
@@ -22,6 +32,7 @@ document.getElementById("numbers").checked = checked;
 function save_symbols() {
   var checkbox = document.getElementById("symbols");
   localStorage.setItem("com.crackyOS.pwgen_symbols", checkbox.checked);
+  navigator.vibrate(15);
 }
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_symbols"));
 document.getElementById("symbols").checked = checked;
@@ -29,9 +40,16 @@ document.getElementById("symbols").checked = checked;
 function save_readability() {
   var checkbox = document.getElementById("readability");
   localStorage.setItem("com.crackyOS.pwgen_readability", checkbox.checked);
+  navigator.vibrate(15);
 }
 var checked = JSON.parse(localStorage.getItem("com.crackyOS.pwgen_readability"));
 document.getElementById("readability").checked = checked;
+
+function reset_length() {
+  document.getElementById("length").value = 16;
+  save_length();
+  navigator.vibrate(15);
+}
 
 ("use strict");
 const resultEl = document.getElementById("result"),
@@ -61,10 +79,12 @@ clipboardEl.addEventListener("click", () => {
   document.body.appendChild(textarea);
   textarea.select();
   document.execCommand("copy");
+  navigator.vibrate(15);
   textarea.remove();
 });
 
 generateEl.addEventListener("click", () => {
+  navigator.vibrate(15);
   const length = +lengthEl.value,
     hasLower = lowercaseEl.checked,
     hasUpper = uppercaseEl.checked,
