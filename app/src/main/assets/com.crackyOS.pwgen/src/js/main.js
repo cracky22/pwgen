@@ -1,7 +1,7 @@
 // === Pride Mode (01.06 - 30.06) ===
 /*(function() {
   var now = new Date();
-  var month = now.getMonth() + 1; // 1-based
+  var month = now.getMonth() + 1;
   var day = now.getDate();
   if (month === 6 && day >= 1 && day <= 30) {
     document.body.classList.add('pride-mode');
@@ -71,7 +71,8 @@ const resultEl = document.getElementById("result"),
   symbolsEl = document.getElementById("symbols"),
   readabilityEl = document.getElementById("readability"),
   generateEl = document.getElementById("generate"),
-  clipboardEl = document.getElementById("clipboard");
+  clipboardEl = document.getElementById("clipboard"),
+  toggleResultEl = document.getElementById("toggle-result");
 
 const randomFunc = {
   lower: getRandomLower,
@@ -98,8 +99,20 @@ clipboardEl.addEventListener("click", () => {
   textarea.remove();
 });
 
+toggleResultEl.addEventListener("click", () => {
+  const isExpanded = resultEl.classList.toggle("expanded");
+  toggleResultEl.classList.toggle("expanded", isExpanded);
+  toggleResultEl.title = isExpanded ? "Einklappen" : "Ausklappen";
+  navigator.vibrate(15);
+});
+
 generateEl.addEventListener("click", () => {
   navigator.vibrate(15);
+  // Bei neuem Passwort wieder einklappen
+  resultEl.classList.remove("expanded");
+  toggleResultEl.classList.remove("expanded");
+  toggleResultEl.title = "Ausklappen";
+
   const length = +lengthEl.value,
     hasLower = lowercaseEl.checked,
     hasUpper = uppercaseEl.checked,

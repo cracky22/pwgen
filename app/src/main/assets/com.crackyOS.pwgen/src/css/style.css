@@ -88,11 +88,11 @@ h2 {
   display: flex;
   border-radius: 13px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   font-size: 18px;
   letter-spacing: 1px;
-  padding: 12px 50px 12px 10px;
+  padding: 12px 55px 12px 10px;
   min-height: 50px;
   width: 100%;
 }
@@ -101,20 +101,35 @@ h2 {
   word-wrap: break-word;
   word-break: break-all;
   max-width: calc(100% - 40px);
-  border-radius: 13px;
   white-space: normal;
+  max-height: 80px;
+  overflow: hidden;
+  transition: max-height 0.4s ease !important;
 }
 
-.result-container .btn {
+.result-container #result.expanded {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.result-container #result.expanded::-webkit-scrollbar {
+  width: 4px;
+}
+
+.result-container #result.expanded::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.result-actions {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  font-size: 20px;
-  flex-shrink: 0;
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 input.number {
@@ -153,6 +168,24 @@ button.btn:hover {
   transition: 0.4s;
 }
 
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#toggle-result svg {
+  transition: transform 0.3s ease !important;
+}
+
+#toggle-result.expanded svg {
+  transform: rotate(180deg);
+}
+
 .setting {
   display: flex;
   justify-content: space-between;
@@ -161,6 +194,6 @@ button.btn:hover {
 }
 
 img.copy {
-    height: 23px;
-    float: left;
+  height: 23px;
+  float: left;
 }

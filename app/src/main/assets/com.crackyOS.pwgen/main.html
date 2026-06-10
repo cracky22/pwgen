@@ -14,34 +14,39 @@
     <h2 onclick="document.body.classList.toggle('pride-mode');">Passwort Generator</h2>
     <div class="result-container">
       <span id="result"></span>
-      <button class="btn" id="clipboard">
-        <img class="copy" src="./src/img/copy.png">
-      </button>
+      <div class="result-actions">
+        <button class="btn btn-icon" id="toggle-result" title="Ausklappen" aria-label="Passwort ausklappen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+        </button>
+        <button class="btn btn-icon" id="clipboard">
+          <img class="copy" src="./src/img/copy.png">
+        </button>
+      </div>
     </div>
     <div class="settings">
       <div class="setting">
         <label onclick="reset_length();">Länge</label>
-        <input class="number" type="number" id="length" oninput="save_length();" min="4" max="40" value="16" />
+        <input class="number" type="number" id="length" oninput="save_length();" min="4" max="1000" value="16" />
       </div>
       <div class="setting">
         <label>Großbuchstaben</label>
-        <input onclick="save_uppercase();" type="checkbox" id="uppercase"  />
+        <input onclick="save_uppercase();" type="checkbox" id="uppercase" />
       </div>
       <div class="setting">
         <label>Kleinbuchstaben</label>
-        <input onclick="save_lowercase();" type="checkbox" id="lowercase"  />
+        <input onclick="save_lowercase();" type="checkbox" id="lowercase" />
       </div>
       <div class="setting">
         <label>Ziffern</label>
-        <input onclick="save_numbers();" type="checkbox" id="numbers"  />
+        <input onclick="save_numbers();" type="checkbox" id="numbers" />
       </div>
       <div class="setting">
         <label>Sonderzeichen</label>
-        <input onclick="save_symbols();" type="checkbox" id="symbols"  />
+        <input onclick="save_symbols();" type="checkbox" id="symbols" />
       </div>
       <div class="setting">
         <label>gut lesbar</label>
-        <input onclick="save_readability();" type="checkbox" id="readability"  />
+        <input onclick="save_readability();" type="checkbox" id="readability" />
       </div>
     </div>
     <button class="btn btn-large" id="generate">Passwort generieren</button>
