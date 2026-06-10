@@ -81,6 +81,8 @@ const randomFunc = {
   symbol: getRandomSymbol,
 };
 
+toggleResultEl.style.display = "none";
+
 document.getElementById("length").addEventListener("keydown", (e) => {
   if (e.key === "Enter") e.target.blur();
 });
@@ -126,6 +128,8 @@ generateEl.addEventListener("click", () => {
     hasSymbol,
     length
   );
+
+  toggleResultEl.style.display = length >= 60 ? "flex" : "none";
 });
 
 function generatePassword(lower, upper, number, symbol, length) {
