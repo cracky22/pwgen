@@ -10,7 +10,7 @@ android {
         applicationId "com.crackyOS.pwgen"
         minSdk 34
         versionCode 1
-        versionName "1.4.0 (2026-06-07)"
+        versionName "1.4.1 (2026-06-10)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
